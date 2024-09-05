@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b1b;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+.quiz-container, .image-container {
+    background-color: #ffffff10;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    max-width: 48%;
+    box-sizing: border-box;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Estilo para los marcos de las preguntas */
+.question {
+    border: 1px solid #000000; /* Borde por defecto */
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #3c3c3c00; /* Color de fondo por defecto */
+}
+
+.question:nth-child(1) {
+    border-color: #dbf436; /* Color del borde para la primera pregunta */
+    background-color: #04040439;
+}
+
+.question:nth-child(2) {
+    border-color: #81ecff; /* Color del borde para la segunda pregunta */
+    background-color: #04040439;
+}
+
+.question:nth-child(3) {
+    border-color: #4caf50; /* Color del borde para la tercera pregunta */
+    background-color: #04040439;
+}
+/* Estilo para el botón */
+/* Estilo para el botón */
+button {
+    display: block;
+    width: 200px; /* Ajusta el ancho según lo necesites */
+    margin: 20px auto; /* Centra el botón horizontalmente */
+    background-color: #ff000080;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Ajusta el tamaño de la fuente si es necesario */
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+/* Estilo para ocultar el cuestionario y mostrar solo el mensaje de completado */
+#completado {
+    text-align: center;
+    display: none; /* Ocultado por defecto */
+    width: 100%;
+    max-width: 600px; /* Ajusta según sea necesario */
+    margin: 0 auto; /* Centra el contenedor en su contenedor padre */
+}
+
+#completado p {
+    margin: 0;
+    font-size: 18px;
+}
+
+#completado button {
+    display: inline-block;
+    width: auto; /* Ajusta el ancho según el contenido */
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Espacio arriba del botón */
+}
+
+#completado button:hover {
+    background-color: #d32f2f;
+}
+
+/* Ocultar el cuestionario cuando se complete */
+#cuestionario {
+    display: block; /* Asegura que se muestre por defecto */
+}
+
+#cuestionario.hidden {
+    display: none; /* Ocultar cuando se aplica la clase "hidden" */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quiz-container, .image-container {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}

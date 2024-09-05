@@ -1,0 +1,145 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* Fondo negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Evita el scroll si el contenido se desborda */
+}
+
+/* Contenedor principal que une los dos contenedores con separación */
+.main-container {
+    background-color: #2c2c2c00; 
+    padding: 30px; /* Espacio interior alrededor de los contenedores */
+    border-radius: 12px; /* Bordes redondeados del contenedor principal */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0);
+}
+
+/* Contenedor para los dos contenedores internos */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+/* Cambiar el color del título principal a blanco */
+h1 {
+    color: white;
+}
+
+/* O cualquier otra etiqueta específica */
+
+/* Contenedores a la izquierda y derecha */
+.left-container, .right-container {
+    width: 400px; /* Ancho fijo */
+    min-width: 400px; /* Ancho mínimo */
+    max-width: 400px; /* Ancho máximo */
+    background-color: #85828251; /* Color medio plomo */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.49);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Espaciado entre los contenedores */
+.left-container {
+    margin-right: 30px; /* Espaciado de 30px a la derecha */
+}
+
+.right-container {
+    margin-left: 30px; /* Espaciado de 30px a la izquierda */
+    min-height: 400px; /* Establece una altura mínima para el contenedor de la rutina */
+}
+
+/* Estilos para los elementos dentro de los contenedores */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Color de texto en blanco */
+}
+
+select, button {
+    display: block;
+    width: calc(100% - 22px); /* Ajusta el ancho para que el padding no desborde */
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho */
+    width: calc(100% - 0px); 
+}
+
+button {
+    background-color: #ff00007c; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: calc(100% - 0px); /* Ajusta el ancho para tener en cuenta los márgenes izquierdo y derecho */
+}
+
+button:hover {
+    background-color: #cc0000; 
+}
+
+.right-container {
+    margin-left: 30px;
+    min-height: 400px;
+    position: relative; /* Asegura que el contenedor sea el contexto para el botón posicionado */
+}
+
+#diaSiguienteBtn {
+    background-color: #ff00007c; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute; /* Posiciona el botón de manera absoluta dentro del contenedor */
+    bottom: 5px; /* 20px desde la parte inferior del contenedor */
+    left: 20px; /* 20px desde la parte izquierda del contenedor */
+    right: 20px; /* 20px desde la parte derecha del contenedor */
+    width: calc(100% - 40px); /* Ajusta el ancho para tener en cuenta los márgenes izquierdo y derecho */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho */
+    margin-top: 20px; /* Espacio encima del botón */
+}
+
+#diaSiguienteBtn:hover {
+    background-color: #cc0000; 
+}
+
+/* Ocultar elementos por defecto */
+.hidden {
+    display: none;
+}
+/* Cambiar el color de los títulos de las rutinas a verde */
+.rutina-display h3 {
+    color: rgb(255, 186, 186);
+}
+
+/* Cambiar el color del resto del texto a blanco */
+.rutina-display p,
+.rutina-display ul,
+.rutina-display li {
+    color: white;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Apila los contenedores en vertical en pantallas pequeñas */
+        align-items: center; /* Centra los contenedores horizontalmente */
+    }
+
+    .left-container, .right-container {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        max-width: none; /* Quita el límite máximo en pantallas pequeñas */
+        margin: 0; /* Elimina el margen entre los contenedores en pantallas pequeñas */
+        margin-bottom: 20px; /* Añade espacio debajo de los contenedores */
+    }
+
+    .right-container {
+        margin-bottom: 0; /* Elimina el margen inferior en el último contenedor */
+    }
+}

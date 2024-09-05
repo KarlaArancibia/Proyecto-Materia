@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red de Puntos y Líneas Animados</title>
+<style>
+  body {
+    background-color: black;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ 
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Función para ajustar el tamaño del canvas
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  // Ajustar el tamaño del canvas al cargar la página
+  resizeCanvas();
+
+  // Ajustar el tamaño del canvas cuando cambia el tamaño de la ventana
+  window.addEventListener('resize', resizeCanvas);
+
+  // Personalización de los puntos y líneas
+  const points = [];
+  const maxDistance = 90; // Distancia máxima para conectar puntos
+  const maxSpeed = 2; // Velocidad máxima de movimiento de los puntos
+
+  function Point(x, y, radius, speedX, speedY) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.speedX = speedX;
+    this.speedY = speedY;
+
+    this.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = 'white'; // Color de los puntos (personalizable)
+      ctx.fill();
+    }
+
+    this.update = function() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Verificar si el punto está fuera del canvas
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        // Eliminar este punto
+        points.splice(points.indexOf(this), 1);
+        // Crear un nuevo punto en una posición aleatoria en el borde opuesto
+        const newX = Math.random() * canvas.width;
+        const newY = Math.random() * canvas.height;
+        const newSpeedX = (Math.random() - 0.5) * maxSpeed;
+        const newSpeedY = (Math.random() - 0.5) * maxSpeed;
+        points.push(new Point(newX, newY, this.radius, newSpeedX, newSpeedY));
+      }
+
+      this.draw();
+    }
+  }
+
+  function connectPoints() {
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        const distance = Math.sqrt(Math.pow(points[i].x - points[j].x, 2) + Math.pow(points[i].y - points[j].y, 2));
+        if (distance < maxDistance) {
+          const opacity = 1 - distance / maxDistance; // Calcular la opacidad basada en la distancia
+          ctx.beginPath();
+          ctx.moveTo(points[i].x, points[i].y);
+          ctx.lineTo(points[j].x, points[j].y);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`; // Color y opacidad de las líneas (personalizable)
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let point of points) {
+      point.update();
+    }
+
+    connectPoints();
+  }
+
+  function init() {
+    // Personalización de la cantidad y posición de los puntos
+    for (let i = 0; i < 30; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2; // Tamaño de los puntos (personalizable)
+      const speedX = (Math.random() - 0.5) * maxSpeed;
+      const speedY = (Math.random() - 0.5) * maxSpeed;
+      points.push(new Point(x, y, radius, speedX, speedY));
+    }
+
+    // Crear nuevos puntos cuando otros desaparecen
+    for (let i = 0; i < 5; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 2; // Tamaño de los puntos (personalizable)
+      const speedX = (Math.random() - 0.5) * maxSpeed;
+      const speedY = (Math.random() - 0.5) * maxSpeed;
+      points.push(new Point(x, y, radius, speedX, speedY));
+    }
+
+    animate();
+  }
+
+  init();
+</script>
+</body>

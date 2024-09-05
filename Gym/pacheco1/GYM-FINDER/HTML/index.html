@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM CENTER</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../10-1-Estilos-header-footer.css">
+
+    <!-- Incluir Font Awesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background: url('fondo2.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 50px 0;
+            background-color: rgba(0, 0, 0, 0.389);
+        }
+
+        .main-content h1 {
+            color: #ff0000;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+        }
+
+        .main-content .text-content {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        
+        .carousel {
+            display: none; 
+            margin-top: 20px;
+            padding: 20px; 
+            background-color: rgba(255, 251, 251, 0.56); 
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            text-align: center; 
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            justify-content: center; 
+        }
+
+        .carousel img {
+            width: 100%; 
+            max-width: 189px; 
+            height: auto; 
+            cursor: pointer;
+            object-fit: cover; 
+            border-radius: 5px; 
+            margin-right: 10px;
+        }
+
+        .carousel .carousel-images img:last-child {
+            margin-right: 0;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel img {
+                max-width: 80%; 
+            }
+            .carousel-images {
+                justify-content: center; 
+            }
+            .carousel-button {
+                font-size: 1.5em; 
+                padding: 8px; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel img {
+                max-width: 100%; 
+            }
+            .carousel-button {
+                font-size: 1.2em; 
+                padding: 6px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Logo del sitio -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../../../images/logouwu.png" alt="Logo del sitio">
+            </a>
+        </div>
+    
+        <!-- Navegación principal -->
+        <nav class="nav">
+            <ul>
+                <li><a href="../../../1-Inicio.html">Inicio</a></li>
+                <li class="blog-item">
+                    <a href="../../../2.2-Blogs.html">Blog</a>
+                    <ul class="submenu">
+                        <li><a href="../../../2.2-Blogs.html">Todos</a></li>
+                        <li><a href="../../../2.3-Nutricion.html">Nutrición</a></li>
+                        <li><a href="../../../2.4-Rutinas.html">Rutinas</a></li>
+                        <li><a href="../../../2.5-Tips.html">Tips</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../../pacheco1/GYM-FINDER/HTML/index.html">Gym Finder</a></li>
+                <li><a href="../../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML">Seguimiento</a></li>
+                <li><a href="../../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html">Supplement Store</a></li>
+                <li><a href="../../../colque/materia/index.html">Personal</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Botones de acción -->
+
+        <div class="header-buttons">
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                <button class="btn register-btn">Registrarse</button>
+            </a>
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                <button class="btn login-btn">Iniciar Sesión</button>
+            </a>
+        </div>
+        
+    
+        <!-- Menú hamburguesa -->
+        <div class="menu-hamburguesa">
+            <img class="icono-hamburguesa" src="../../../images/hamburguesa.png" alt="Menú hamburguesa">
+        </div>
+    
+        <!-- Barra lateral -->
+        <div class="barra-lateral" id="barra-lateral">
+            <div class="barra-lateral-header">
+                <a href="../../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                    <button class="btn register-btn">Registrarse</button>
+                </a>
+                <a href="../../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                    <button class="btn login-btn">Iniciar Sesión</button>
+                </a>
+            </div>
+            <a href="../../../1-Inicio.html" class="menu-item">Inicio</a>
+            <div class="menu-item blog-item">
+                <a href="../../../2.2-Blogs.html">Blog</a>
+                <div class="submenu">
+                    <a href="../../../2.2-Blogs.html">Todos</a>
+                    <a href="../../../2.3-Nutricion.html">Nutrición</a>
+                    <a href="../../../2.4-Rutinas.html">Rutinas</a>
+                    <a href="../../../2.5-Tips.html">Tips</a>
+                </div>
+            </div>
+            <a href="../../../pacheco1/GYM-FINDER/HTML/index.html" class="menu-item">Gym Finder</a>
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML" class="menu-item">Seguimiento</a>
+            <a href="../../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html" class="menu-item">Supplement Store</a>
+            <a href="../../../colque/materia/index.html" class="menu-item">Personal</a>
+        </div>
+    
+        <!-- Overlay para cerrar la barra lateral -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="text-content">
+                <h1>Encuentra el Gimnasio Perfecto Cerca de ti con Sintetix Gym Finder</h1>
+                <p>En Sintetix Gym Finder, sabemos que encontrar el gimnasio adecuado puede ser un desafío. Por eso, hemos creado una herramienta fácil de usar que te permite descubrir los mejores gimnasios cerca de tu ubicación. Lee reseñas de otros usuarios, compara precios y horarios, y encuentra la opción perfecta que se adapte a tus necesidades de fitness.</p>
+                <button class="cta-button" id="findGymButton">ENCONTRAR GIMNASIO</button>
+
+                <!-- Carrusel de gimnasios -->
+                <div class="carousel" id="gymCarousel">
+                    <button class="carousel-button prev">&#10094;</button>
+                    <div class="carousel-images" id="carouselImages">
+                        <img src="BLACKFIT.jpg" alt="BLACKFIT" onclick="location.href='https://maps.google.com/?q=gym1'" class="active">
+                        <img src="coronas.jpg" alt="CORONAS GYM" onclick="location.href='https://maps.google.com/?q=gym2'">
+                        <img src="EVOLUTIONPRO.jpg" alt="EVOLUTION PRO" onclick="location.href='https://maps.google.com/?q=gym3'">
+                        <img src="FOX.jpg" alt="FOX GYM" onclick="location.href='https://maps.google.com/?q=gym1'">
+                        <img src="GOFIT.jpg" alt="GOFIT" onclick="location.href='https://maps.google.com/?q=gym2'">
+                        <img src="PREMIER.jpg" alt="PREMIER TARIJA" onclick="location.href='https://maps.google.com/?q=gym3'">
+                        <img src="PROFIT.jpg" alt="PROFIT" onclick="location.href='https://maps.google.com/?q=gym1'">
+                        <img src="titanium.jpg" alt="TITANIUM" onclick="location.href='https://maps.google.com/?q=gym2'">
+                        <img src="ZONAFIT.jpg" alt="ZONA FIT" onclick="location.href='https://maps.google.com/?q=gym3'">
+                    </div>
+                    <button class="carousel-button next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../../../images/Montserrat-removebg-preview.png" alt="Logo de Gym Center">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>En Gym Center, nuestra misión es ayudarte a alcanzar tus metas de bienestar físico y mental.</p>
+                <p>Nos dedicamos a crear un espacio inclusivo y motivador para todos.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>Gym Center</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Scripts de JavaScript -->
+    <script>
+        const carousel = document.getElementById('gymCarousel');
+        const findGymButton = document.getElementById('findGymButton');
+        const images = document.querySelectorAll('.carousel-images img');
+        let currentIndex = 0;
+        const totalImages = images.length;
+
+        
+        findGymButton.addEventListener('click', () => {
+            if (carousel.style.display === 'none' || carousel.style.display === '') {
+                carousel.style.display = 'block';
+            } else {
+                carousel.style.display = 'none';
+            }
+        });
+
+        function updateCarousel() {
+            images.forEach((img, index) => {
+                img.classList.remove('active');
+                if (index === currentIndex) {
+                    img.classList.add('active');
+                }
+            });
+            const offset = -currentIndex * (images[0].clientWidth + 10);
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}px)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        
+        document.querySelector('.carousel-button.prev').addEventListener('click', prevSlide);
+        document.querySelector('.carousel-button.next').addEventListener('click', nextSlide);
+
+        
+        window.addEventListener('resize', updateCarousel);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel();
+            if (window.innerWidth < 768) {
+                setInterval(nextSlide, 3000); 
+            }
+        });
+    </script>
+    <script src="../../../100-1-Inicio.js"></script>
+</body>
+</html>

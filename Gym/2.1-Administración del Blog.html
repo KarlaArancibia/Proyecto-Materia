@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración del Blog</title>
+    <link rel="stylesheet" href="10-2-Estilos-blogs.css"> 
+</head>
+<body>
+
+    <main class="main-blogss">
+        <h1>Administración del Blog</h1>
+    <form id="blogForm">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="image">Imagen:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <label for="content">Contenido:</label>
+        <textarea id="content" name="content" rows="4" required></textarea>
+
+        <label for="category">Categoría:</label>
+        <select id="category" name="category" required>
+            <option value="nutricion">Nutrición</option>
+            <option value="rutinas">Rutinas</option>
+            <option value="tips">Tips</option>
+        </select>
+
+        <button type="submit">Guardar Blog</button>
+    </form>
+
+    <h2>Lista de Blogs</h2>
+    <div id="adminBlogList"></div>
+    </main>
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="100-2-Administracion.js"></script>
+</body>
+</html>

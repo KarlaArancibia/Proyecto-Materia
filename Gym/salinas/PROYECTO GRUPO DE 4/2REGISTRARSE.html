@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #303030, #242424);
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 900px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.079); /* Sombra alrededor del contenedor blanco */
+            overflow: visible;
+        }
+        .left {
+            flex: 1.5;
+            background-color: #1b2a4e;
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: url('IMAGENES/3.png');
+            background-size: cover;
+            background-position: left; /* Aquí está el ajuste */
+            border-radius: 20px; /* Redondear todas las esquinas */           
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.236); /* Añadido para la sombra alrededor de toda la imagen */
+            text-align: left;
+        }
+        .left h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        .left p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        .left .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            text-align: center; /* Añadido para centrar el texto */
+        }
+        .right {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .right h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .right form .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .right form .input-group input {
+            padding: 10px 40px 10px 40px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .right form .input-group .icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+        .right form .input-group .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .right form button {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #000000;
+            border: none;
+            border-radius: 30px;
+            color: #ffffff;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .right form button:hover {
+            background-color: #333333;
+        }
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .signup-link a {
+            color: #ff00ff;
+            text-decoration: none;
+        }
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+            }
+            .left, .right {
+                border-radius: 20px;
+            }
+            .left {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .right {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+         /* Oculta el icono de fecha predeterminado */
+         input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div>
+                <h1>Crear una nueva Cuenta</h1>
+                <p>Por favor, completa todos los campos obligatorios para crear tu cuenta.</p>
+            </div>
+            <p class="footer">Únete a nuestra comunidad</p>
+        </div>
+        <div class="right">
+            <h2>Registro</h2>
+            <form>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <input type="text" placeholder="Nombres" required>
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" placeholder="Correo Electronico" required>
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <span class="eye-icon" onclick="togglePassword()"><i class="fas fa-eye"></i></span>
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="confirm-password" placeholder="Repite la Contraseña" required>
+                    <span class="eye-icon" onclick="togglePasswordConfirm()"><i class="fas fa-eye"></i></span>
+                </div>
+                <div class="input-group">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <input type="date" placeholder="Fecha de Nacimiento" required>
+                </div>
+                <button type="submit">GUARDAR DATOS</button>
+            </form>
+            <div class="signup-link">
+                ¿Ya tienes una cuenta? <a href="1INICIOSESION.html">Login</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById('password');
+            var eyeIcon = document.querySelector('#password ~ .eye-icon i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+        function togglePasswordConfirm() {
+            var passwordField = document.getElementById('confirm-password');
+            var eyeIcon = document.querySelector('#confirm-password ~ .eye-icon i');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+       
+      // Función para guardar los datos del registro en localStorage
+function handleRegister(event) {
+    event.preventDefault(); // Evita que el formulario se envíe de manera predeterminada
+
+    const nombres = document.querySelector('input[placeholder="Nombres"]').value;
+    const correo = document.querySelector('input[placeholder="Correo Electronico"]').value;
+    const password = document.querySelector('input[placeholder="Contraseña"]').value;
+    const confirmPassword = document.querySelector('input[placeholder="Repite la Contraseña"]').value;
+
+    // Verificar que las contraseñas coincidan
+    if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden.');
+        return;
+    }
+
+    // Guardar en localStorage
+    localStorage.setItem('nombres', nombres);
+    localStorage.setItem('correo', correo);
+    localStorage.setItem('password', password);
+
+    alert('Registro exitoso!'); // Mensaje de confirmación
+
+    // Redireccionar a la página de inicio de sesión
+    window.location.href = '1INICIOSESION.html'; // Redirige al inicio de sesión
+}
+
+// Asignar la función al evento submit del formulario
+document.querySelector('form').addEventListener('submit', handleRegister);
+
+
+    </script>
+</body>
+</html>

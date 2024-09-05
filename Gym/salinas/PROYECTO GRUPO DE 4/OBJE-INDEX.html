@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutinas de Ejercicio</title>
+    <link rel="stylesheet" href="OBJE-RUTINAS.css">
+    <style>
+    .background-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        z-index: -1; /* Coloca el iframe detrás del contenido principal */
+    }
+</style>
+</head>
+<body>
+    <iframe src="FONDO.html" class="background-iframe"></iframe>
+    <div class="main-container">
+        <div class="container">
+            <div class="left-container">
+                <h1>Rutinas de Ejercicio</h1>
+                <label for="objetivo">Selecciona tu objetivo:</label>
+                <select id="objetivo">
+                    <option value="musculo">Ganar Masa Muscular</option>
+                    <option value="peso">Perder Peso</option>
+                    <option value="resistencia">Mejorar Resistencia</option>
+                </select>
+
+                <label for="nivel">Selecciona tu nivel:</label>
+                <select id="nivel">
+                    <option value="principiante">Principiante</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="avanzado">Avanzado</option>
+                </select>
+
+                <button id="actualizarBtn">Actualizar Rutina</button>
+                <button id="irCalendarioBtn">Ir al Calendario</button>
+
+            </div>
+
+            <div class="right-container">
+                <div id="rutinaContainer" class="hidden">
+                    <div id="rutina"></div>
+                    <button id="diaSiguienteBtn">Siguiente Día</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="OBJE-RUTINAS.JS"></script>
+</body>
+</html>

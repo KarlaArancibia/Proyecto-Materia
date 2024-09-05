@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../10-1-Estilos-header-footer.css">
+    
+    <style>
+/* Estilos básicos para el calendario */
+body {
+    background-color: #000; /* Cambia el color de fondo a negro */
+    color: #707e7e; /* Cambia el color del texto a blanco */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center; /* Centra el contenido dentro del body */
+}
+
+/* Contenedor principal para centrar y limitar el ancho */
+.container {
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Espaciado interno */
+     
+}
+
+/* Contenedor del calendario con fondo blanco y borde */
+.calendar {
+    position: relative;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 30px; /* Espaciado hacia abajo */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px; /* Espaciado entre los botones */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#markAttendance {
+    background-color: #007bff; /* Color del botón de asistencia */
+}
+
+#markAttendance:hover {
+    background-color: #0056b3;
+}
+
+#markComplete {
+    background-color: #6c757d; /* Color del botón de tarea completada cuando está deshabilitado */
+}
+
+#markComplete:disabled {
+    background-color: #6c757d; /* Color cuando está deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+}
+
+#markComplete:not(:disabled) {
+    background-color: #28a745; /* Color del botón cuando está habilitado */
+}
+
+#markComplete:not(:disabled):hover {
+    background-color: #218838;
+}
+
+/* Estilo para el selector de mes */
+select {
+    margin-bottom: 10px;
+}
+
+/* Estilo para el modal */
+#noteModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#noteModal div {
+    background-color: white;
+    padding: 20px;
+    width: 300px;
+    max-width: 100%; /* Asegura que no se sobrepase del contenedor */
+    position: relative;
+    box-sizing: border-box; /* Incluye el padding y el border en el tamaño total */
+}
+
+#modalNoteArea {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+#countdown {
+    font-size: 60px; /* Aumenta el tamaño de la fuente */
+    padding: 15px;
+    border: 2px solid #808080;
+    border-radius: 15px; /* Bordes redondeados */
+    background-color: #fff;
+    position: relative; /* Posición absoluta dentro del contenedor de calendario */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición horizontal */
+    top: 100%; /* Coloca el contador justo debajo del contenedor */
+    margin-top: 10px; /* Espaciado hacia abajo desde el contenedor */
+    box-shadow: 0 0 5px rgb(246, 246, 246); /* Sombra opcional para mejorar el aspecto */
+    z-index: 10; /* Asegura que el contador esté por encima de otros elementos si es necesario */
+    width: calc(60% - 0px);
+}
+
+/* Estilos para el calendario y el selector de mes */
+#daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+#daysGrid div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    position: relative;
+}
+
+.inactive {
+    background-color: #f0f0f0;
+}
+
+.today {
+    background-color: #ffffe0; /* Color amarillo para el día actual */
+}
+
+.attendance {
+    background-color: rgb(68, 234, 68);
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.note {
+    background-color: orange;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+/* Estilo para los días de la semana */
+.weekdays {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.weekdays div {
+    width: 14.28%; /* Para que cada día ocupe un espacio igual */
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Logo del sitio -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../../images/logouwu.png" alt="Logo del sitio">
+            </a>
+        </div>
+    
+        <!-- Navegación principal -->
+        <nav class="nav">
+            <ul>
+                <li><a href="../../1-Inicio.html">Inicio</a></li>
+                <li class="blog-item">
+                    <a href="../../2.2-Blogs.html">Blog</a>
+                    <ul class="submenu">
+                        <li><a href="../../2.2-Blogs.html">Todos</a></li>
+                        <li><a href="../../2.3-Nutricion.html">Nutrición</a></li>
+                        <li><a href="../../2.4-Rutinas.html">Rutinas</a></li>
+                        <li><a href="../../2.5-Tips.html">Tips</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../pacheco1/GYM-FINDER/HTML/index.html">Gym Finder</a></li>
+                <li><a href="../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML">Seguimiento</a></li>
+                <li><a href="../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html">Supplement Store</a></li>
+                <li><a href="../../colque/materia/index.html">Personal</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Botones de acción -->
+
+        <div class="header-buttons">
+            <a href="../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                <button class="btn register-btn">Registrarse</button>
+            </a>
+            <a href="../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                <button class="btn login-btn">Iniciar Sesión</button>
+            </a>
+        </div>
+        
+    
+        <!-- Menú hamburguesa -->
+        <div class="menu-hamburguesa">
+            <img class="icono-hamburguesa" src="../../images/hamburguesa.png" alt="Menú hamburguesa">
+        </div>
+    
+        <!-- Barra lateral -->
+        <div class="barra-lateral" id="barra-lateral">
+            <div class="barra-lateral-header">
+                <a href="../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                    <button class="btn register-btn">Registrarse</button>
+                </a>
+                <a href="../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                    <button class="btn login-btn">Iniciar Sesión</button>
+                </a>
+            </div>
+            <a href="../../1-Inicio.html" class="menu-item">Inicio</a>
+            <div class="menu-item blog-item">
+                <a href="../../2.2-Blogs.html">Blog</a>
+                <div class="submenu">
+                    <a href="../../2.2-Blogs.html">Todos</a>
+                    <a href="../../2.3-Nutricion.html">Nutrición</a>
+                    <a href="../../2.4-Rutinas.html">Rutinas</a>
+                    <a href="../../2.5-Tips.html">Tips</a>
+                </div>
+            </div>
+            <a href="../../pacheco1/GYM-FINDER/HTML/index.html" class="menu-item">Gym Finder</a>
+            <a href="../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML" class="menu-item">Seguimiento</a>
+            <a href="../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html" class="menu-item">Supplement Store</a>
+            <a href="../../colque/materia/index.html" class="menu-item">Personal</a>
+        </div>
+    
+        <!-- Overlay para cerrar la barra lateral -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <div class="container">
+        <h1>Calendario</h1>
+
+        <select id="monthSelector">
+            <option value="0">Enero</option>
+            <option value="1">Febrero</option>
+            <option value="2">Marzo</option>
+            <option value="3">Abril</option>
+            <option value="4">Mayo</option>
+            <option value="5">Junio</option>
+            <option value="6">Julio</option>
+            <option value="7">Agosto</option>
+            <option value="8">Septiembre</option>
+            <option value="9">Octubre</option>
+            <option value="10">Noviembre</option>
+            <option value="11">Diciembre</option>
+        </select>
+
+        <div class="calendar">
+            <div class="weekdays">
+                <div>Dom</div>
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mié</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sáb</div>
+            </div>
+            <div id="daysGrid"></div>
+        </div>
+
+        
+
+        <div id="buttonContainer">
+            <button id="markAttendance">Marcar Asistencia</button>
+            <button id="markComplete" disabled>Completar Tarea</button>
+           
+        </div>
+    </div>
+     <div id="countdown">00:00</div>
+</div>
+        <!-- Modal para notas -->
+        <div id="noteModal">
+            <div>
+                <span class="close">&times;</span>
+                <h2 id="modalDate"></h2>
+                <textarea id="modalNoteArea" rows="4" cols="50" placeholder="Escribe una nota..."></textarea>
+                <button id="saveNote">Guardar Nota</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../../images/Montserrat-removebg-preview.png" alt="Logo de Gym Center">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>En Gym Center, nuestra misión es ayudarte a alcanzar tus metas de bienestar físico y mental.</p>
+                <p>Nos dedicamos a crear un espacio inclusivo y motivador para todos.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>Gym Center</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <script src="calendario.js"></script>
+    <script src="../../100-1-Inicio.js"></script>
+</body>
+</html>

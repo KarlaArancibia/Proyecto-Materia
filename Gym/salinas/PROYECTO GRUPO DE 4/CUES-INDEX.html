@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Rutinas Semanales</title>
+    <link rel="stylesheet" href="CUES-RUTINAS.CSS">
+    <style>
+        .background-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        z-index: -1; /* Coloca el iframe detrás del contenido principal */
+    }
+
+    </style>
+</head>
+<body>
+    <iframe src="FONDO.html" class="background-iframe"></iframe>
+    <div class="main-container">
+        <div class="quiz-container" id="cuestionario">
+            <h2>Cuestionario Inicial</h2>
+            <form>
+                <div class="question">
+                    <label>¿Cuántas veces a la semana planeas entrenar?</label><br>
+                    <input type="radio" name="entrenamiento" value="1-2 veces"> A. 1-2 veces<br>
+                    <input type="radio" name="entrenamiento" value="3-4 veces"> B. 3-4 veces<br>
+                    <input type="radio" name="entrenamiento" value="5-6 veces"> C. 5-6 veces<br>
+                </div>
+                <div class="question">
+                    <label>¿Qué tipo de ejercicios prefieres incluir?</label><br>
+                    <input type="radio" name="ejercicio" value="Resistencia"> A. Resistencia<br>
+                    <input type="radio" name="ejercicio" value="Cardio"> B. Cardio<br>
+                    <input type="radio" name="ejercicio" value="Combinado"> C. Combinado<br>
+                </div>
+                <div class="question">
+                    <label>¿Cuál es tu principal objetivo de entrenamiento?</label><br>
+                    <input type="radio" name="objetivo" value="Salud"> A. Salud<br>
+                    <input type="radio" name="objetivo" value="Estética"> B. Estética<br>
+                    <input type="radio" name="objetivo" value="Rendimiento"> C. Rendimiento<br>
+                </div>
+                <button type="button" onclick="guardarRespuestas()">Guardar</button>
+            </form>
+        </div>
+
+        <div id="completado">
+            <p>¿Deseas volver a contestar?</p>
+            <button onclick="volverACuestionario()">Volver a contestar</button>
+        </div>
+        
+        <div class="image-container">
+            <img src="IMAGENES/1.png" alt="Rutinas" />
+        </div>
+    </div>
+
+    <script src="CUES-RUTINAS.JS"></script>
+</body>
+</html>

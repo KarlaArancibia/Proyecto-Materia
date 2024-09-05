@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM CENTER</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../10-1-Estilos-header-footer.css">
+    <!-- Incluir Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('fondo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            background-color: #ff0000;
+            border-radius: 50%;
+            padding: 5px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 0.8em;
+            color: #fff;
+        }
+
+        .cart-popup {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background-color: #333;
+            border: 1px solid #fff;
+            padding: 20px;
+            display: none;
+            width: 300px;
+        }
+
+        .cart-popup img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .cart-popup p {
+            margin: 5px 0;
+        }
+
+        .product-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .product-section h2 {
+            font-size: 3em;
+            color: #ff0000;
+            margin: 0;
+        }
+
+        .product-section h3 {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #111;
+            border: 1px solid #fff;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card p {
+            margin: 15px 0;
+            flex-grow: 1;
+        }
+
+        .product-card button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            margin-top: auto; 
+        }
+
+        
+        
+        @media (max-width: 1024px) {
+            nav ul {
+                text-align: center;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr); 
+            }
+
+            .product-section h2 {
+                font-size: 2.5em;
+            }
+
+            .product-section h3 {
+                font-size: 1.8em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+
+           
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr; 
+            }
+
+            .product-section h2 {
+                font-size: 2em;
+            }
+
+            .product-section h3 {
+                font-size: 1.5em;
+            }
+
+            .product-card {
+                padding: 15px;
+            }
+
+            nav ul {
+                padding-left: 0;
+            }
+
+        }
+        .remove-button {
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .remove-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Logo del sitio -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../../../images/logouwu.png" alt="Logo del sitio">
+            </a>
+        </div>
+    
+        <!-- Navegación principal -->
+        <nav class="nav">
+            <ul>
+                <li><a href="../../../1-Inicio.html">Inicio</a></li>
+                <li class="blog-item">
+                    <a href="../../../2.2-Blogs.html">Blog</a>
+                    <ul class="submenu">
+                        <li><a href="../../../2.2-Blogs.html">Todos</a></li>
+                        <li><a href="../../../2.3-Nutricion.html">Nutrición</a></li>
+                        <li><a href="../../../2.4-Rutinas.html">Rutinas</a></li>
+                        <li><a href="../../../2.5-Tips.html">Tips</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../../pacheco1/GYM-FINDER/HTML/index.html">Gym Finder</a></li>
+                <li><a href="../../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML">Seguimiento</a></li>
+                <li><a href="../../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html">Supplement Store</a></li>
+                <li><a href="../../../colque/materia/index.html">Personal</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Botones de acción -->
+
+        <div class="header-buttons">
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                <button class="btn register-btn">Registrarse</button>
+            </a>
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                <button class="btn login-btn">Iniciar Sesión</button>
+            </a>
+        </div>
+        
+    
+        <!-- Menú hamburguesa -->
+        <div class="menu-hamburguesa">
+            <img class="icono-hamburguesa" src="../../../images/hamburguesa.png" alt="Menú hamburguesa">
+        </div>
+    
+        <!-- Barra lateral -->
+        <div class="barra-lateral" id="barra-lateral">
+            <div class="barra-lateral-header">
+                <a href="../../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                    <button class="btn register-btn">Registrarse</button>
+                </a>
+                <a href="../../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                    <button class="btn login-btn">Iniciar Sesión</button>
+                </a>
+            </div>
+            <a href="../../../1-Inicio.html" class="menu-item">Inicio</a>
+            <div class="menu-item blog-item">
+                <a href="../../../2.2-Blogs.html">Blog</a>
+                <div class="submenu">
+                    <a href="../../../2.2-Blogs.html">Todos</a>
+                    <a href="../../../2.3-Nutricion.html">Nutrición</a>
+                    <a href="../../../2.4-Rutinas.html">Rutinas</a>
+                    <a href="../../../2.5-Tips.html">Tips</a>
+                </div>
+            </div>
+            <a href="../../../pacheco1/GYM-FINDER/HTML/index.html" class="menu-item">Gym Finder</a>
+            <a href="../../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML" class="menu-item">Seguimiento</a>
+            <a href="../../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html" class="menu-item">Supplement Store</a>
+            <a href="../../../colque/materia/index.html" class="menu-item">Personal</a>
+        </div>
+    
+        <!-- Overlay para cerrar la barra lateral -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <section class="product-section">
+        <div class="container">
+            <h2>NUESTROS</h2>
+            <h3>PRODUCTOS</h3>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="creatina.webp" alt="Producto 1">
+                    <p>CREATINE DARKNESS 200gr</p>
+                    <p>Bs. 230</p>
+                    <button onclick="addToCart('CREATINE DARKNESS 200gr', 'creatina.webp')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="testosterona.jpg" alt="Producto 2">
+                    <p>Nebido Undecanoato De Testosterona 1000Mg Y 4Ml X Ampolla</p>
+                    <p>Bs. 1.459,62</p>
+                    <button onclick="addToCart('Nebido Undecanoato De Testosterona 1000Mg Y 4Ml X Ampolla', 'testosterona.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="protena.webp" alt="Producto 3">
+                    <p>Gold Standard WHET PROTEIN 2 Libras</p>
+                    <p>Bs. 850.50</p>
+                    <button onclick="addToCart('Gold Standard WHET PROTEIN 2 Libras', 'protena.webp')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="anabolicos.jpg" alt="Producto 4">
+                    <p>ANABOL HARCORE NUTRE 60 CAPS</p>
+                    <p>Bs. 1000</p>
+                    <button onclick="addToCart('ANABOL HARCORE NUTRE 60 CAPS', 'anabolicos.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="trmbolona.jpg" alt="Producto 5">
+                    <p>Trembolona Acetato - LANDERLAN</p>
+                    <p>Bs. 700</p>
+                    <button onclick="addToCart('Trembolona Acetato - LANDERLAN', 'trmbolona.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="glutamina.jpg" alt="Producto 6">
+                    <p>L-Glutamine 100% pura 350g</p>
+                    <p>Bs. 230.00</p>
+                    <button onclick="addToCart('L-Glutamine 100% pura 350g', 'glutamina.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="beta.jpg" alt="Producto 7">
+                    <p>Suplemento Beta Hd Preentrenamiento Atlhetica Sabor Limonada Rosa X 240G</p>
+                    <p>Bs. 99.00</p>
+                    <button onclick="addToCart('Suplemento Beta Hd Preentrenamiento Atlhetica Sabor Limonada Rosa X 240G', 'beta.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="zma.jpg" alt="Producto 8">
+                    <p>ZMA vitaminas y minerales.</p>
+                    <p>Bs. 89.00</p>
+                    <button onclick="addToCart('ZMA vitaminas y minerales', 'zma.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="coenzina.jpg" alt="Producto 9">
+                    <p>Coq-10 Coenzime Q10 100Mg Coenzima X 30 Capsulas Blandas</p>
+                    <p>Bs. 235.10</p>
+                    <button onclick="addToCart('Coq-10 Coenzime Q10 100Mg Coenzima X 30 Capsulas Blandas', 'coenzina.jpg')">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="omega.webp" alt="Producto 10">
+                    <p>Omega 3 Farmacorp 1000Mg X 60 Cap Blandas</p>
+                    <p>Bs. 71.00</p>
+                    <button onclick="addToCart('Omega 3 Farmacorp 1000Mg X 60 Cap Blandas', 'omega.webp')">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../../../images/Montserrat-removebg-preview.png" alt="Logo de Gym Center">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>En Gym Center, nuestra misión es ayudarte a alcanzar tus metas de bienestar físico y mental.</p>
+                <p>Nos dedicamos a crear un espacio inclusivo y motivador para todos.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>Gym Center</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Carrito emergente -->
+    <div class="cart-popup">
+        <h4>Carrito de Compras</h4>
+        <div id="cartItems"></div>
+        <button onclick="checkout()">Finalizar Compra</button>
+    </div>
+
+    <script>
+        
+        function toggleCartPopup() {
+            var cartPopup = document.querySelector('.cart-popup');
+            if (cartPopup.style.display === 'none' || cartPopup.style.display === '') {
+                cartPopup.style.display = 'block';
+            } else {
+                cartPopup.style.display = 'none';
+            }
+        }
+
+        
+        function addToCart(productName, imageUrl) {
+            var cartItems = document.getElementById('cartItems');
+            var cartCount = document.querySelector('.cart-count');
+            
+            
+            var productDiv = document.createElement('div');
+            productDiv.style.display = 'flex';
+            productDiv.style.alignItems = 'center';
+            productDiv.style.marginBottom = '10px';
+            
+           
+            var img = document.createElement('img');
+            img.src = imageUrl;
+            productDiv.appendChild(img);
+            
+            
+            var productText = document.createElement('p');
+            productText.innerText = productName;
+            productDiv.appendChild(productText);
+
+            
+            var removeButton = document.createElement('button');
+            removeButton.innerText = 'Eliminar';
+            removeButton.className = 'remove-button';
+            removeButton.onclick = function() {
+                removeFromCart(productDiv);
+            };
+            productDiv.appendChild(removeButton);
+            
+            
+            cartItems.appendChild(productDiv);
+
+            
+            cartCount.innerText = parseInt(cartCount.innerText) + 1;
+        }
+
+        
+        function removeFromCart(productDiv) {
+            var cartItems = document.getElementById('cartItems');
+            var cartCount = document.querySelector('.cart-count');
+
+            
+            cartItems.removeChild(productDiv);
+
+            
+            cartCount.innerText = parseInt(cartCount.innerText) - 1;
+        }
+
+        
+        function checkout() {
+            alert("Gracias por tu compra!");
+            
+        }
+    </script>
+    <script src="../../../100-1-Inicio.js"></script>
+</body>
+</html>
+ 

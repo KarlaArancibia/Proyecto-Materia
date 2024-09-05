@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes Exclusivos</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../10-1-Estilos-header-footer.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <!-- Logo del sitio -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../../images/logouwu.png" alt="Logo del sitio">
+            </a>
+        </div>
+    
+        <!-- Navegación principal -->
+        <nav class="nav">
+            <ul>
+                <li><a href="../../1-Inicio.html">Inicio</a></li>
+                <li class="blog-item">
+                    <a href="../../2.2-Blogs.html">Blog</a>
+                    <ul class="submenu">
+                        <li><a href="../../2.2-Blogs.html">Todos</a></li>
+                        <li><a href="../../2.3-Nutricion.html">Nutrición</a></li>
+                        <li><a href="../../2.4-Rutinas.html">Rutinas</a></li>
+                        <li><a href="../../2.5-Tips.html">Tips</a></li>
+                    </ul>
+                </li>
+                <li><a href="../../pacheco1/GYM-FINDER/HTML/index.html">Gym Finder</a></li>
+                <li><a href="../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML">Seguimiento</a></li>
+                <li><a href="../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html">Supplement Store</a></li>
+                <li><a href="../../colque/materia/index.html">Personal</a></li>
+            </ul>
+        </nav>
+    
+        <!-- Botones de acción -->
+
+        <div class="header-buttons">
+            <a href="../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                <button class="btn register-btn">Registrarse</button>
+            </a>
+            <a href="../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                <button class="btn login-btn">Iniciar Sesión</button>
+            </a>
+        </div>
+        
+    
+        <!-- Menú hamburguesa -->
+        <div class="menu-hamburguesa">
+            <img class="icono-hamburguesa" src="../../images/hamburguesa.png" alt="Menú hamburguesa">
+        </div>
+    
+        <!-- Barra lateral -->
+        <div class="barra-lateral" id="barra-lateral">
+            <div class="barra-lateral-header">
+                <a href="../../salinas/PROYECTO GRUPO DE 4/2REGISTRARSE.html">
+                    <button class="btn register-btn">Registrarse</button>
+                </a>
+                <a href="../../salinas/PROYECTO GRUPO DE 4/1INICIOSESION.html">
+                    <button class="btn login-btn">Iniciar Sesión</button>
+                </a>
+            </div>
+            <a href="../../1-Inicio.html" class="menu-item">Inicio</a>
+            <div class="menu-item blog-item">
+                <a href="../../2.2-Blogs.html">Blog</a>
+                <div class="submenu">
+                    <a href="../../2.2-Blogs.html">Todos</a>
+                    <a href="../../2.3-Nutricion.html">Nutrición</a>
+                    <a href="../../2.4-Rutinas.html">Rutinas</a>
+                    <a href="../../2.5-Tips.html">Tips</a>
+                </div>
+            </div>
+            <a href="../../pacheco1/GYM-FINDER/HTML/index.html" class="menu-item">Gym Finder</a>
+            <a href="../../salinas/PROYECTO GRUPO DE 4/4CALENDARIO.HTML" class="menu-item">Seguimiento</a>
+            <a href="../../pacheco2/PROYECTO FINAL-DISEÑO WEB 2/HTML/gym-website-code.html" class="menu-item">Supplement Store</a>
+            <a href="../../colque/materia/index.html" class="menu-item">Personal</a>
+        </div>
+    
+        <!-- Overlay para cerrar la barra lateral -->
+        <div class="overlay" id="overlay"></div>
+    </header>
+
+    <!-- Sección de Planes -->
+    <section class="plans-section">
+        <h1>Conoce nuestros planes <br> <span>EXCLUSIVOS</span></h1>
+        <div class="plans-container">
+            <div class="plan-card">
+                <div class="plan-header basic">BÁSICO</div>
+                <ul class="plan-features">
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                </ul>
+                <div class="plan-price">Desde $500</div>
+                <button class="button select-plan-button" data-plan="BÁSICO">Seleccionar</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-header standard">ESTÁNDAR</div>
+                <ul class="plan-features">
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                </ul>
+                <div class="plan-price">Desde $1000</div>
+                <button class="button select-plan-button" data-plan="ESTÁNDAR">Seleccionar</button>
+            </div>
+            <div class="plan-card">
+                <div class="plan-header pro">PRO</div>
+                <ul class="plan-features">
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                    <li>Accede Ahora</li>
+                </ul>
+                <div class="plan-price">Desde $1500</div>
+                <button class="button select-plan-button" data-plan="PRO">Seleccionar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Formulario de Registro -->
+    <section class="form-section" style="display: none;">
+        <h1>Formulario de Registro - <span id="plan-name">Plan</span></h1>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="button cta-button">Continuar al Pago</button>
+        </form>
+        <button class="button back-button" onclick="showPlans()">Volver a Planes</button>
+    </section>
+
+    <!-- Sección de Opciones de Pago -->
+    <section class="payment-options-section" style="display: none;">
+        <h1>Selecciona tu método de pago</h1>
+        <div class="payment-options">
+            <button class="button payment-option" data-method="card">
+                <i class="fas fa-credit-card"></i>
+                Pagar con Tarjeta
+            </button>
+            <button class="button payment-option" data-method="qr">
+                <i class="fas fa-qrcode"></i>
+                Pagar con QR
+            </button>
+        </div>
+        <button class="button back-button" onclick="showForm()">Volver al Formulario</button>
+    </section>
+
+    <!-- Sección de Pago con Tarjeta -->
+    <section class="payment-section" style="display: none;">
+        <h1>Formulario de Pago con Tarjeta</h1>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="card-number">Número de Tarjeta</label>
+                <input type="text" id="card-number" name="card-number" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Fecha de Expiración</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+            <button type="submit" class="button cta-button">Pagar</button>
+        </form>
+        <button class="button back-button" onclick="showPaymentOptions()">Volver a Opciones de Pago</button>
+    </section>
+
+    <!-- Sección de Pago con QR -->
+    <section class="qr-section" style="display: none;">
+        <h1>Escanea el QR para completar tu pago</h1>
+        <div id="qr-code"></div>
+        <p>Escanea el código QR con la cámara de tu smartphone</p>
+        <button class="button back-button" onclick="showPaymentOptions()">Volver a Opciones de Pago</button>
+    </section>
+
+    <!-- Modal de Felicitación -->
+    <div id="congratulations-modal" class="modal">
+        <div class="modal-content">
+            <h2>¡Felicidades!</h2>
+            <p>Tu pago ha sido procesado con éxito.</p>
+            <button class="button cta-button" onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="../../images/Montserrat-removebg-preview.png" alt="Logo de Gym Center">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>En Gym Center, nuestra misión es ayudarte a alcanzar tus metas de bienestar físico y mental.</p>
+                <p>Nos dedicamos a crear un espacio inclusivo y motivador para todos.</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>Gym Center</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="../../100-1-Inicio.js"></script>
+</body>
+</html>

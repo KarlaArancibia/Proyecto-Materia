@@ -1,0 +1,261 @@
+body {
+    background-image: url('img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+        min-height: 100vh; /* Asegura que el cuerpo tenga al menos la altura completa de la ventana */
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid transparent;
+}
+
+.cta-button {
+    background-color: #ff3333;
+    color: #ffffff;
+    border-color: #ff3333;
+}
+
+.cta-button:hover, .cta-button:focus {
+    background-color: #ffffff;
+    color: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 0 4px 8px rgba(255, 51, 51, 0.2);
+}
+
+.back-button {
+    background-color: #333333;
+    color: #ffffff;
+    border-color: #333333;
+}
+
+.back-button:hover, .back-button:focus {
+    background-color: #ffffff;
+    color: #333333;
+    border-color: #333333;
+    box-shadow: 0 4px 8px rgba(51, 51, 51, 0.2);
+}
+
+.plans-section, .form-section, .payment-options-section, .payment-section, .qr-section {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.plans-section h1, .form-section h1, .payment-options-section h1, .payment-section h1, .qr-section h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.plans-section span {
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.plans-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/*  ajuste de las tarjetas */
+.plans-section {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.plans-section h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.plans-section span {
+    color: #ff3333;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.plans-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Asegura que las tarjetas estén centradas verticalmente */
+    gap: 20px;
+    min-height: 60vh; /* Altura mínima para centrar las tarjetas verticalmente */
+}
+
+.plan-card {
+    flex: 1 1 300px; /* Cambia el tamaño base mínimo */
+    max-width: 200px; /* Ajusta el ancho máximo */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(253, 252, 252, 0.3);
+    margin: 10px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Efecto de transición */
+}
+
+.plan-card:hover {
+    transform: scale(1.05); /* Agranda la tarjeta ligeramente al pasar el ratón */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Aumenta la sombra */
+}
+
+.plan-header {
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.plan-header.basic {
+    background-color: #ff4d4d;
+}
+
+.plan-header.standard {
+    background-color: #ff3333;
+}
+
+.plan-header.pro {
+    background-color: #ff1a1a;
+}
+
+.plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+.plan-features li {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.plan-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    /* cambiar el fondo */
+    background-color: rgba(255, 44, 44, 0.89);
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    /* cambiel el color*/
+    background-color: rgb(250, 246, 246);
+    transform: translateY(-5px);
+}
+
+.payment-option i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #221919; /* Cambia el color de los iconos aquí */
+}
+
+#qr-code {
+    background-color: #fff;
+    padding: 20px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.modal-content h2 {
+    color: #ff3333;
+}
+
+.modal-content p {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .plan-card {
+        flex-basis: 100%;
+    }
+}

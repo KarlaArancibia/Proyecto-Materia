@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Progreso</title>
+    <link rel="stylesheet" href="progreso.css">
+</head>
+<body>
+
+    <header>
+        <h1>Registro de Progreso</h1>
+    </header>
+
+    <main>
+        <section id="progress-form">
+            <h2>Ingresa tus Datos</h2>
+            <form id="form-progreso">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" step="0.1" min="0" required>
+
+                <label for="cintura">Medida de la Cintura (cm):</label>
+                <input type="number" id="cintura" step="0.1" min="0" required>
+                
+                <button type="submit">Guardar Progreso</button>
+            </form>
+        </section>
+
+        <section id="progress-chart">
+            <h2>Progreso a lo Largo del Tiempo</h2>
+            <canvas id="chartProgreso"></canvas>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="progreso.js"></script>
+
+</body>
+</html>
